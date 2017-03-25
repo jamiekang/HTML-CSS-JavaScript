@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <title>ASGMT3/PART3</title>
+        <meta name="author" content="Jiyang Kang, jiyang71@gmail.com">
+        <style type="text/css">
+            img{position:absolute;}
+            div{position:absolute; width:500px; height:500px}
+            #rightSide {left: 500px; border-left:1px solid black}
+        </style>
+    </head>
+    <body id="theBody" onload="generateFaces()">
+        <h1>Matching Game</h1>
+        <p>
+            Click on the extra smiling face on the left.
+        </p>
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
+        <script>
+        var numberOfFaces = 5;
+        var theLeftSide = document.getElementById("leftSide");
+        var theRightSide = document.getElementById("rightSide");
+        var rightSideImages;
+
+        function generateFaces(){
+            for (var index=0; index < numberOfFaces; index++){
+              var top_position = Math.floor(Math.random() * 400);
+              var left_position = Math.floor(Math.random() * 400);
+
+              var this_img=document.createElement("img");
+              this_img.src = "https://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+              this_img.style.top = top_position + "px";
+              this_img.style.left = left_position + "px";
+              theLeftSide.appendChild(this_img);
+            }
+            leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+        }
+
+        function printChildInfo(parent)
+        {
+            var childs = parent.childNodes;
+
+            for (var i = 0; i < childs.length; ++i)
+            {
+                var c = childs[i];
+                console.log([c.nodeName, c.nodeValue]);
+            }
+        }
+
+<!--
+            function show_pattern(){
+                var top_position = 25;
+                var left_position = 25;
+                var width = 500;
+                var height = 500;
+                var color_list=["red","orange","yellow","green","blue","indigo","violet"];
+                var the_body = document.getElementById("theBody");
+
+                while(width > 50) {
+                    var this_div = document.createElement("div");
+                    var random_color = Math.random() * 7;
+                    random_color = Math.floor(random_color);
+                    this_div.style.top = top_position + "px";
+                    this_div.style.left = left_position + "px";
+                    this_div.style.width = width + "px";
+                    this_div.style.height = height + "px";
+                    this_div.style.background = color_list[random_color];
+                    the_body.appendChild(this_div);
+                    top_position += 10; left_position += 10;
+                    width -= 20; height -= 20;
+                }
+            }
+-->
+        </script>
+    </body>
+</html>
