@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <title>ASGMT2/PART1</title>
+    <meta name="author" content="Jiyang Kang, jiyang71@gmail.com">
+</head>
+    <body onload="do_game()">
+        <script>
+          //HTML Color Names: http://www.w3schools.com/colors/colors_names.asp
+          var color = ["azure", "coral", "crimson", "gold",
+            "khaki", "lime", "linen", "maroon",
+            "navy", "olive", "orchid", "peru",
+            "plum", "teal", "violet", "wheat"];
+          var max_color = color.length;
+          var target;
+          var guess_input_text;
+          var guess_input;
+          var finished = false;
+          var guesses = 0;
+
+          function do_game() {
+              var random_number = Math.random() * max_color;
+              var random_number_integer = Math.floor(random_number);
+              //console.log("maxcolor: " + max_color + ", " + random_number + ", " + random_number_integer)
+              target = color[random_number_integer];
+              console.log("Init color: " + target);
+
+              while (!finished) {
+                  guess_input_text = prompt("I am thinking of one of these colors:\n\n"+
+                    "azure, " + "coral, " + "crimson, " + "gold, " +
+                    "khaki, " + "lime, " + "linen, " + "maroon, " +
+                    "navy, " + "olive, " + "orchid, " + "peru, " +
+                    "plum, " + "teal, " + "violet, " + "wheat" + "\n\n" +
+                                            "What color am I thinking of?");
+                  //guess_input = parseInt(guess_input_text);
+                  console.log("Answer: " + guess_input_text);
+                  guesses += 1;
+                  finished = check_guess();
+              }
+          }
+
+          function check_guess() {
+              //for debugging
+              if(guess_input_text > target){
+                  alert("Sorry, your guess is not correct!\n\n" +
+                  "Hint: your color is alphabetically higher than mine.\n\n" +
+                  "Please try again.");
+                  return false;
+              }else if(guess_input_text < target){
+                  alert("Sorry, your guess is not correct!\n\n" +
+                  "Hint: your color is alphabetically lower than mine.\n\n" +
+                  "Please try again.");
+                  return false;
+              }else{
+                  alert("You got it! The color was " + target +
+                  ".\n\nIt took you " + guesses +
+                  " guesses to get the number!");
+                  return true;
+              }
+              //return true;  //for debugging
+              /*
+              if (isNaN(guess_input)) {
+                  alert("You have not entered a number.\n\n" +
+                        "Please enter a number in the range 1 to 100.");
+                  return false;
+              }
+              if ((guess_input < 1) || (guess_input > 100)) {
+                  alert("Please enter an integer number in the range 1 to 100.");
+                  return false;
+              }
+              if (guess_input > target) {
+                  alert("Your number is too large!");
+                  return false;
+              }
+              if (guess_input < target) {
+                  alert("Your number is too small!");
+                  return false;
+              }
+              alert("You got it! The number was " + target +
+                    ".\n\nIt took you " + guesses +
+                    " guesses to get the number!");
+              return true;
+              */
+          }
+        </script>
+    </body>
+</html>

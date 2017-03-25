@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>ASGMT2/PART2</title>
+    <meta name="author" content="Jiyang Kang, jiyang71@gmail.com">
+</head>
+    <body onload="do_game()">
+        <script>
+          //HTML Color Names: http://www.w3schools.com/colors/colors_names.asp
+          var color = ["azure", "coral", "crimson", "gold",
+            "khaki", "lime", "linen", "maroon",
+            "navy", "olive", "orchid", "peru",
+            "plum", "teal", "violet", "wheat"];
+          var max_color = color.length;
+          var target, target_index;
+          var guess_input;
+          var finished = false;
+          var guesses = 0;
+
+          function do_game() {
+              var random_number = Math.random() * max_color;
+              var target_index = Math.floor(random_number);
+              target = color[target_index];
+              console.log("The answer is: " + target);
+
+              while (!finished) {
+                  guess_input = prompt("I am thinking of one of these colors:\n\n"+
+                      "azure, " + "coral, " + "crimson, " + "gold, " +
+                      "khaki, " + "lime, " + "linen, " + "maroon, " +
+                      "navy, " + "olive, " + "orchid, " + "peru, " +
+                      "plum, " + "teal, " + "violet, " + "wheat" + "\n\n" +
+                      "What color am I thinking of?");
+                  console.log("Answer: " + guess_input);
+                  guesses += 1;
+                  finished = check_guess();
+              }
+          }
+
+          function check_guess() {
+              if (color.indexOf(guess_input) == -1) {
+                  alert("Sorry, I don't recognize your color.\n\n" +
+                        "Please try again.");
+                  return false;
+              }else if(guess_input > target){
+                  alert("Sorry, your guess is not correct!\n\n" +
+                  "Hint: your color is alphabetically higher than mine.\n\n" +
+                  "Please try again.");
+                  return false;
+              }else if(guess_input < target){
+                  alert("Sorry, your guess is not correct!\n\n" +
+                  "Hint: your color is alphabetically lower than mine.\n\n" +
+                  "Please try again.");
+                  return false;
+              }else{
+                myBody=document.getElementsByTagName("body")[0];
+                myBody.style.background=target;
+
+                  alert("Congratulations! You have guessed the color - " + target +
+                  "!\n\nIt took you " + guesses +
+                  " guesses to finish the game!\n\n" +
+                  "You can see the color in the background.");
+                  return true;
+              }
+          }
+        </script>
+    </body>
+</html>
