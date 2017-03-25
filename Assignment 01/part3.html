@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASGMT1/PART3</title>
+  <meta name="author" content="Jiyang Kang, jiyang71@gmail.com">
+  <!-- Part 3: Adding interactive features -->
+  <style type="text/css">
+  .fs {border:10px solid yellow; background:lightyellow; margin-bottom:10px; width:720px;}
+  .lcommon {display:inline-block; text-align:right; vertical-align:top;}
+  .lleft {width:180px;}
+  .lright {width:auto;}
+  .ta {width:360px; height:50px;}
+  .rcommon {display:inline-block; text-align:center; width:auto; min-width:50px; outline-style:solid; outline-width: 3px;}
+  .rleft {background:red; color:white; outline-color:red;}
+  .rright {background:purple; color:white; outline-color:purple;}
+  label:hover {font-size:25px;}
+  input:hover {font-size:25px;}
+  select:hover {font-size:25px; width:auto; height:auto;}
+  span:hover {font-size:25px;}
+  </style>
+</head>
+<h1>Please Enter Your Details For Our Dating Website!</h1>
+<body>
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="put" enctype="multipart/form-data">
+    <fieldset class="fs">
+      <legend>Your Face</legend>
+      <label class="lcommon lleft" for="avatar">Your image:</label> 
+      <input class="lcommon lright" type="file" id="avatar" name="avatar" required>
+      <br>
+      <label class="lcommon lleft" for="preview">Image preview:</label>
+      <img id="preview">
+    </fieldset>
+    <fieldset class="fs">
+      <legend>Your General Details</legend>
+      <label class="lcommon lleft" for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+      <br>
+      <label class="lcommon lleft" for="gender">Gender:</label>
+      <input type="radio" id="gender1" name="gender" value="Male" required><span class="lcommon lright">Male</span>
+      <input type="radio" id="gender2" name="gender" value="Female" required><span class="lcommon lright">Female</span>
+      <br>
+      <label class="lcommon lleft" for="age">Age:</label>
+      <input type="number" id="age" name="age" min="0" max="100" step="1" value="18" required>
+      <br>
+      <label class="lcommon lleft" for="dateofbirth">Date of birth:</label>
+      <input type="date" id="dateofbirth" name="dateofbirth">
+      <br>
+      <label class="lcommon lleft" for="favoritecolor">Favorite color:</label>
+      <input type="color" id="favoritecolor" name="favoritecolor">
+      <br>
+      <label class="lcommon lleft" for="whichcountry">Which country:</label>
+      <select id="whichcountry" name="whichcountry">
+        <option value="no">&nbsp</option>
+        <option value="fr">France</option>
+        <option value="de">Germany</option>
+        <option value="it">Italy</option>
+        <option value="jp">Japan</option>
+        <option value="us">United States</option>
+      </select>
+    </fieldset>
+    <fieldset class="fs">
+      <legend>Your Indicators</legend>
+      <label class="lcommon lleft" for="height">Height:</label>
+      <span class="rcommon rleft">Short</span> <input type="range" min="0" max="100" step="1" value="50" id="height" name="height"> <span class="rcommon rright">Tall</span>
+      <br>
+      <label class="lcommon lleft" for="salary">Salary:</label>
+      <span class="rcommon rleft">Poor</span> <input type="range" min="0" max="100" step="1" value="50" id="salary" name="salary"> <span class="rcommon rright">Rich</span>
+    </fieldset>
+    <fieldset class="fs">
+      <legend>Your Contact Information</legend>
+      <label class="lcommon lleft" for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br>
+      <label class="lcommon lleft" for="mobile">Mobile:</label>
+      <input type="tel" id="mobile" name="mobile">
+      <br>
+      <label class="lcommon lleft" for="address">Address:</label>
+      <textarea class="ta" rows="8" cols="40" id="address" name="address"></textarea>
+      <br>
+      <label class="lcommon lleft" for="method">Method to contact you:</label>
+      <input type="checkbox" id="method1" name="method" value="email"><span class="lcommon lright">Email</span>
+      <input type="checkbox" id="method2" name="method" value="whatsapp"><span class="lcommon lright">Whatsapp</span>
+      <input type="checkbox" id="method3" name="method" value="inappchat"><span class="lcommon lright">In-app chat</span>
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>
+<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+</body>
+</html>
